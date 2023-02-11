@@ -12,12 +12,12 @@
         tools:layout="@layout/fragment_recipes" />
     <fragment
         android:id="@+id/favoriteFragment"
-        android:name="android.example.foodapp.FavoriteFragment"
+        android:name="android.example.foodapp.ui.fragment.favorite.FavoriteFragment"
         android:label="@string/favorite_title"
         tools:layout="@layout/fragment_favorite" />
     <fragment
         android:id="@+id/foodJokeFragment"
-        android:name="android.example.foodapp.FoodJokeFragment"
+        android:name="android.example.foodapp.ui.fragment.foodjoke.FoodJokeFragment"
         android:label="@string/food_joke_title"
         tools:layout="@layout/fragment_food_joke" />
 </navigation>

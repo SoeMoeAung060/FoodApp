@@ -66,7 +66,7 @@ class RecipesFragment : Fragment() {
 
         queries["number"] = "50"
         queries["apiKey"] = "API_KEY"
-        queries["type"] = "drink"
+        queries["type"] = "snack"
         queries["diet"] = "vegan"
         queries["addReciepeInformation"] = "true"
         queries["fillIngredients"] = "true"
