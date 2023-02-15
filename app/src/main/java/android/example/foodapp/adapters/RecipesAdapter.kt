@@ -21,8 +21,9 @@ class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
         }
 
         companion object{
-
+            // Create new views (invoked by the layout manager)
             fun from(parent: ViewGroup): MyViewHolder{
+                // Create a new view, which defines the UI of the list item
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = RecipesRowLayoutBinding.inflate(layoutInflater, parent, false)
                 return MyViewHolder(binding)
@@ -34,11 +35,15 @@ class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
         return MyViewHolder.from(parent)
     }
 
+    // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        // Get element from your dataset at this position and replace the
+        // contents of the view with that element
         val currentRecipes = recipes[position]
         holder.bind(currentRecipes)
     }
 
+    // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount(): Int {
         return recipes.size
     }

@@ -13,6 +13,8 @@
         android:id="@+id/recipesRowLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp">
 
@@ -41,7 +43,7 @@
                     android:id="@+id/imageView2"
                     android:layout_width="160dp"
                     android:layout_height="0dp"
-                    android:contentDescription="imageView"
+                    android:contentDescription="@string/imageview"
                     android:scaleType="centerCrop"
                     loadImageFromUrl="@{result.image}"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -54,7 +56,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="12dp"
                     android:layout_marginEnd="16dp"
                     android:ellipsize="end"
                     android:maxLines="1"
@@ -69,7 +71,7 @@
                     android:id="@+id/textView2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="8dp"
                     android:ellipsize="end"
                     android:maxLines="2"
                     android:text="@{result.summary}"
@@ -95,28 +97,29 @@
                     android:id="@+id/heart_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
                     android:text="@{String.valueOf(result.aggregateLikes)}"
-                    android:textColor="@color/red"
                     android:textAlignment="center"
+                    android:textColor="@color/red"
                     app:layout_constraintStart_toStartOf="@+id/textView2"
                     app:layout_constraintTop_toBottomOf="@+id/heart_imageView" />
 
                 <ImageView
                     android:id="@+id/clock_imageView"
-                    app:tint="@color/yellow"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="@+id/clock_textView"
                     app:layout_constraintStart_toStartOf="@+id/clock_textView"
                     app:layout_constraintTop_toTopOf="@+id/heart_imageView"
-                    app:srcCompat="@drawable/ic_clock" />
+                    app:srcCompat="@drawable/ic_clock"
+                    app:tint="@color/yellow" />
 
                 <TextView
                     android:id="@+id/clock_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:text="@{String.valueOf(result.readyInMinutes)}"
+                    android:layout_marginStart="48dp"
+                    android:text="@{String.valueOf(result.cookingMinutes)}"
                     android:textAlignment="center"
                     android:textColor="@color/yellow"
                     app:layout_constraintStart_toEndOf="@+id/heart_textView"
@@ -135,11 +138,11 @@
 
                 <TextView
                     android:id="@+id/leaf_textView"
+                    applyVeganColor="@{result.vegan}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:text="Vegan"
-                    applyVeganColor="@{result.vegan}"
+                    android:layout_marginStart="36dp"
+                    android:text="vegan"
                     android:textAlignment="center"
                     android:textColor="@color/mediumGray"
                     app:layout_constraintStart_toEndOf="@+id/clock_textView"
