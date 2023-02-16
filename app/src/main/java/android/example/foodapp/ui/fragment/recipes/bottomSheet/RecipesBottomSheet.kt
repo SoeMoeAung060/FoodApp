@@ -74,7 +74,7 @@ class RecipesBottomSheet : BottomSheetDialogFragment() {
         }
 
 
-        recipesViewModel.readMealAndDietType.asLiveData().observe(viewLifecycleOwner, { value ->
+        recipesViewModel.readMealAndDietType.asLiveData().observe(viewLifecycleOwner, androidx.lifecycle.Observer { value ->
             mealTypeChip = value.selectedMealType
             dietTypeChip = value.selectedDietType
             updateChip(value.selectedMealTypeId, binding.mealTypeCheapGroup)

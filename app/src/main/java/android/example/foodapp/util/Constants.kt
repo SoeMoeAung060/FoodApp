@@ -5,7 +5,7 @@ class Constants {
     companion object{
 
         const val BASE_URL = "https://api.spoonacular.com"
-        const val API_KEY = "77408384c2604ce9afe4b0ef13ec753b"
+        const val API_KEY = "0c218c0d76014232bbd3c1f137e4395a"
 
         //API Query Keys
         const val QUERY_NUMBER = "number"
@@ -32,6 +32,7 @@ class Constants {
         const val PREFERENCES_MEAL_TYPE_ID = "mealTypeID"
         const val PREFERENCES_DIET_TYPE = "dietType"
         const val PREFERENCES_DIET_TYPE_ID = "dietTypeID"
+        const val PREFERENCES_BACK_ONLINE = "backOnline"
 
 
 

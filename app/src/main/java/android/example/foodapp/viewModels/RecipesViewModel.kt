@@ -14,7 +14,9 @@ import android.example.foodapp.util.Constants.Companion.QUERY_FILL_INGREDIENTS
 import android.example.foodapp.util.Constants.Companion.QUERY_MAX_READY_TIME
 import android.example.foodapp.util.Constants.Companion.QUERY_NUMBER
 import android.example.foodapp.util.Constants.Companion.QUERY_TYPE
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -31,14 +33,23 @@ class RecipesViewModel @Inject constructor(
     private var mealType = DEFAULT_MEAL_TYPE
     private var dietType = DEFAULT_DIET_TYPE
 
+    var networkStatus = false
+    var backOnline = false
+
     val readMealAndDietType = dataStoreRepository.readMealAndDietType
+    val readBackOnline = dataStoreRepository.readBackOnline.asLiveData()
 
     fun saveMealAndDietType(mealType : String, mealTypeId : Int, dietType : String, dietTypeId : Int){
 
         viewModelScope.launch(Dispatchers.IO) {
             dataStoreRepository.saveMealAndDietType(mealType, mealTypeId, dietType, dietTypeId)
         }
+    }
 
+    fun saveBackOnline(backOnline: Boolean){
+        viewModelScope.launch(Dispatchers.IO) {
+            dataStoreRepository.saveBackOnline(backOnline)
+        }
     }
 
     fun applyQueries() : HashMap<String, String>{
@@ -60,11 +71,19 @@ class RecipesViewModel @Inject constructor(
         queries[QUERY_ADD_RECIEPE_INFORMATION] = "true"
         queries[QUERY_FILL_INGREDIENTS] = "true"
         queries[QUERY_MAX_READY_TIME] = "20"
-//
-//        queries[QUERY_QUERY] = "pasta"
-//        queries[QUERY_MAXFAT] = "25"
-
 
         return queries
+    }
+
+    fun showNetworkStatus(){
+        if (!networkStatus){
+            Toast.makeText(getApplication(), "No Internet Connection", Toast.LENGTH_SHORT).show()
+            saveBackOnline(true)
+        } else if (networkStatus){
+             if (backOnline){
+                 Toast.makeText(getApplication(), "Internet Connected", Toast.LENGTH_SHORT).show()
+                 saveBackOnline(false)
+             }
+        }
     }
 }
