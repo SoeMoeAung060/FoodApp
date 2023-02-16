@@ -16,6 +16,7 @@ import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -73,7 +74,7 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
                 TODO("Not yet implemented")
             }
 
-        })
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
 
         setupRecyclerView()
