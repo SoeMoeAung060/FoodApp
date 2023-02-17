@@ -47,14 +47,14 @@ class RecipesBottomSheet : BottomSheetDialogFragment() {
 
         binding.mealTypeCheapGroup.setOnCheckedStateChangeListener{ group, selectedChipId ->
             val chip = group.findViewById<Chip>(selectedChipId.first())
-            val selectedMealType = chip.text.toString().toLowerCase(Locale.ROOT)
+            val selectedMealType = chip.text.toString().lowercase(Locale.ROOT)
             mealTypeChip = selectedMealType
             mealTypeChipId = selectedChipId.first()
         }
 
         binding.dietTypeCheapGroup.setOnCheckedStateChangeListener{ group, selectedChipId ->
             val chip = group.findViewById<Chip>(selectedChipId.first())
-            val selectedDietType = chip.text.toString().toLowerCase(Locale.ROOT)
+            val selectedDietType = chip.text.toString().lowercase(Locale.ROOT)
             dietTypeChip = selectedDietType
             dietTypeChipId = selectedChipId.first()
         }

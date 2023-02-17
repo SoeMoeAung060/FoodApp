@@ -20,7 +20,6 @@
         <action
             android:id="@+id/action_recipesFragment_to_detailsActivity"
             app:destination="@id/detailsActivity" />
-        />
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"

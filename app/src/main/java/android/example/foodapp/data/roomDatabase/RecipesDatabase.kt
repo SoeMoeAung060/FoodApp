@@ -1,13 +1,19 @@
 package android.example.foodapp.data.roomDatabase
 
+import android.example.foodapp.data.roomDatabase.entity.FavoriteEntity
+import android.example.foodapp.data.roomDatabase.entity.RecipeEntity
+import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverter
 import androidx.room.TypeConverters
 
-@Database(entities = [RecipeEntity::class], version = 1, exportSchema = false)
+@Database(
+    entities = [RecipeEntity::class, FavoriteEntity::class],
+    version = 1,
+    exportSchema = false
+)
 @TypeConverters(RecipesTypeConverter::class)
 abstract class RecipesDatabase : RoomDatabase() {
 
-    abstract fun recipesDao() : RecipeDao
+    abstract fun recipesDao(): RecipeDao
 }

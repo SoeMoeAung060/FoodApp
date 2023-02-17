@@ -3,7 +3,8 @@ package android.example.foodapp.viewModels
 import android.app.Application
 import android.content.Context
 import android.example.foodapp.data.Repository
-import android.example.foodapp.data.roomDatabase.RecipeEntity
+import android.example.foodapp.data.roomDatabase.entity.FavoriteEntity
+import android.example.foodapp.data.roomDatabase.entity.RecipeEntity
 import android.example.foodapp.models.FoodRecipe
 import android.example.foodapp.util.NetworkResult
 import android.net.ConnectivityManager
@@ -22,13 +23,30 @@ class MainViewModel @Inject constructor(
 ) : AndroidViewModel(application){
 
     /** ROOM DATABASE */
-    val readRecipes : LiveData<List<RecipeEntity>> = repository.local.readDatabase().asLiveData()
+    val readRecipes : LiveData<List<RecipeEntity>> = repository.local.readRecipes().asLiveData()
+    val readFavoriteRecipe : LiveData<List<FavoriteEntity>> = repository.local.readFavoriteRecipes().asLiveData()
     
-    private fun insertRecipes(recipeEntity: RecipeEntity) {
-        viewModelScope.launch(Dispatchers.IO) { 
+    private fun insertRecipes(recipeEntity: RecipeEntity) =
+        viewModelScope.launch(Dispatchers.IO) {
             repository.local.insertRecipes(recipeEntity)
-        }
     }
+
+    fun insertFavoriteRecipes(favoriteEntity: FavoriteEntity) =
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.local.insertFavoriteRecipes(favoriteEntity)
+        }
+
+    fun deleteFavoriteRecipes (favoriteEntity: FavoriteEntity)=
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.local.deleteFavoriteRecipes(favoriteEntity)
+        }
+
+    fun deleteAllFavoriteRecipes() =
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.local.deleteAllFavoriteRecipes()
+        }
+
+
 
 
     /** RETROFIT */
@@ -78,7 +96,7 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private fun offlineCacheRecipes(foodRecipe: FoodRecipe) {
+    private suspend fun offlineCacheRecipes(foodRecipe: FoodRecipe) {
         val recipeEntity = RecipeEntity(foodRecipe)
         insertRecipes(recipeEntity)
     }

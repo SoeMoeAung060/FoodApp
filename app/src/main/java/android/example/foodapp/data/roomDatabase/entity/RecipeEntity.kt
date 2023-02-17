@@ -1,4 +1,4 @@
-package android.example.foodapp.data.roomDatabase
+package android.example.foodapp.data.roomDatabase.entity
 
 import android.example.foodapp.models.FoodRecipe
 import android.example.foodapp.util.Constants.Companion.RECIPES_TABLE

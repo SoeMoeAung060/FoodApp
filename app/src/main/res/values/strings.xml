@@ -43,4 +43,5 @@
     <string name="details">Details</string>
     <string name="viewPager">View Pager</string>
     <string name="tabLayout">TabLayout</string>
+    <string name="save_to_favorite">Save to Favorite</string>
 </resources>

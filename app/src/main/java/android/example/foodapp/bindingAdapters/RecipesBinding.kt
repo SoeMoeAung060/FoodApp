@@ -1,6 +1,6 @@
 package android.example.foodapp.bindingAdapters
 
-import android.example.foodapp.data.roomDatabase.RecipeEntity
+import android.example.foodapp.data.roomDatabase.entity.RecipeEntity
 import android.example.foodapp.models.FoodRecipe
 import android.example.foodapp.util.NetworkResult
 import android.view.View
