@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.example.foodapp.databinding.FragmentOverviewBinding
+import android.example.foodapp.util.Constants.Companion.RECIPES_RESULT
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
@@ -27,8 +28,9 @@ class OverviewFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentOverviewBinding.inflate(inflater, container, false)
 
+        //This args getting our Parcelable data from our pagerAdapter or Detail Activity so we need to that two lines
         val args = arguments
-        val myBundle : android.example.foodapp.models.Result = args?.getParcelable<android.example.foodapp.models.Result>("recipeBundle") as android.example.foodapp.models.Result
+        val myBundle : android.example.foodapp.models.Result = args?.getParcelable<android.example.foodapp.models.Result>(RECIPES_RESULT) as android.example.foodapp.models.Result
 
         binding.mainImageView.load(myBundle.image)
         binding.timeTextView.text = myBundle.readyInMinutes.toString()
@@ -38,7 +40,6 @@ class OverviewFragment : Fragment() {
             val summary = Jsoup.parse(it).text()
             binding.summaryTextView.text = summary
         }
-
 
 
         updateColors(myBundle.vegan, binding.veganTextView, binding.veganImageView)

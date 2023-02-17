@@ -25,4 +25,7 @@
     <color name="chipTextColor">@color/darkGray</color>
 
     <color name="actionBarBackgroundColor">@color/colorPrimary</color>
+
+    <color name="stockColor">@color/lightGray</color>
+    <color name="cardBackgroundColor">@color/white</color>
 </resources>

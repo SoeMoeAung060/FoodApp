@@ -5,6 +5,7 @@ import android.example.foodapp.databinding.ActivityDetailsBinding
 import android.example.foodapp.ui.fragment.ingredients.IngredientsFragment
 import android.example.foodapp.ui.fragment.instructions.InstructionsFragment
 import android.example.foodapp.ui.fragment.overview.OverviewFragment
+import android.example.foodapp.util.Constants.Companion.RECIPES_RESULT
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -43,7 +44,7 @@ class DetailsActivity : AppCompatActivity() {
 
 
         val resultBundle = Bundle()
-        resultBundle.putParcelable("recipeBundle", args.result)
+        resultBundle.putParcelable(RECIPES_RESULT, args.result)
 
         val pagerAdapter = android.example.foodapp.adapters.PagerAdapter(
             resultBundle,
