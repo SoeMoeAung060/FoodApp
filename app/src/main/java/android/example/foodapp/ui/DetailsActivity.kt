@@ -107,9 +107,6 @@ class DetailsActivity : AppCompatActivity() {
                         changeMenuItemColor(menuItem, R.color.yellow)
                         savedRecipeId = saveRecipes.id
                         recipeSaved = true
-                    }else{
-                        changeMenuItemColor(menuItem, R.color.white)
-
                     }
                 }
             }catch (e : Exception){
@@ -156,5 +153,11 @@ class DetailsActivity : AppCompatActivity() {
 
     private fun changeMenuItemColor(item: MenuItem, color: Int) {
         item.icon?.setTint(ContextCompat.getColor(this, color))
+    }
+
+    //Destory remove yellow star
+    override fun onDestroy() {
+        super.onDestroy()
+        changeMenuItemColor(menuItem, R.color.white)
     }
 }
