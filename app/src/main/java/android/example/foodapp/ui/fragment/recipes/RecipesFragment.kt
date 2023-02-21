@@ -83,7 +83,7 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
             recipesViewModel.backOnline = it
         })
 
-        lifecycleScope.launch{
+        lifecycleScope.launchWhenStarted{
             networkListener = NetworkListener()
             networkListener.checkNetworkAvailable(requireContext())
                 .collect{ status ->
@@ -117,15 +117,15 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
 
     private fun readDatabase() {
         lifecycleScope.launch {
-            mainViewModel.readRecipes.observeOnce(viewLifecycleOwner, Observer { database ->
-                if(database.isNotEmpty() && !args.backFromBottomRecipes){
+            mainViewModel.readRecipes.observeOnce(viewLifecycleOwner) { database ->
+                if (database.isNotEmpty() && !args.backFromBottomRecipes) {
                     Log.d("RecipesFragment", "readApiData called")
-                    mAdapter.setData(database[0].foodRecipe)
+                    mAdapter.setData(database.first().foodRecipe)
                     hideShimmerEffect()
-                }else{
+                } else {
                     requestApiData()
                 }
-            } )
+            }
         }
     }
 
@@ -133,22 +133,26 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
     private fun requestApiData(){
         Log.d("RecipesFragment", "requestApiData called")
         mainViewModel.getRecipes(recipesViewModel.applyQueries())
-        mainViewModel.recipesResponse.observe(viewLifecycleOwner, Observer { response ->
-            when(response){
-                is NetworkResult.Success ->{
+        mainViewModel.recipesResponse.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is NetworkResult.Success -> {
                     hideShimmerEffect()
-                    response.data?.let { mAdapter.setData(it) }
+                    response.data?.let { mAdapter.setData(it)}
                 }
-                is NetworkResult.Error ->{
+                is NetworkResult.Error -> {
                     hideShimmerEffect()
                     loadDataFromCache()
-                    Toast.makeText(requireContext(), response.message.toString(), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        response.message.toString(),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
-                is NetworkResult.Loading ->{
+                is NetworkResult.Loading -> {
                     showShimmerEffect()
                 }
             }
-        })
+        }
     }
 
     //Search API data

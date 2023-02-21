@@ -1,8 +1,11 @@
 package android.example.foodapp.data.network
 
+import android.example.foodapp.models.FoodJoke
 import android.example.foodapp.models.FoodRecipe
+import androidx.room.PrimaryKey
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Query
 import retrofit2.http.QueryMap
 
 interface FoodRecipesApi {
@@ -16,4 +19,11 @@ interface FoodRecipesApi {
     suspend fun searchRecipes(
          @QueryMap searchQuery : Map<String, String>
      ):Response<FoodRecipe>
+
+    @GET("food/jokes/random")
+    suspend fun getFoodJoke(
+        @Query("apiKey") apiKey:  String
+    ):Response<FoodJoke>
+
+
 }

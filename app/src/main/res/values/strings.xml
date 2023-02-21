@@ -47,4 +47,7 @@
     <string name="no_favorite_recipes">No Favorite Recipes</string>
     <string name="delete_favorite_menu">delete_favorite_menu</string>
     <string name="delete_all">Delete All</string>
+    
+    <string name="lorem_ipsum">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry </string>
+    <string name="share">Share</string>
 </resources>
