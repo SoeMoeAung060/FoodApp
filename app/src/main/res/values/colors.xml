@@ -28,4 +28,13 @@
 
     <color name="stockColor">@color/lightGray</color>
     <color name="cardBackgroundColor">@color/white</color>
+
+    <color name="statusBarColor">@color/colorPrimaryDark</color>
+    <color name="contextualStatusBarColor">@color/darker</color>
+    <color name="contextualActionBar">@color/dark</color>
+
+
+    <color name="cardBackgroundLightColor">#076200EA</color>
+    <color name="strokeLightColor">#906200EA</color>
+
 </resources>

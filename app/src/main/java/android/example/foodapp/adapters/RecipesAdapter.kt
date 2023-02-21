@@ -37,8 +37,7 @@ class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        // Get element from your dataset at this position and replace the
-        // contents of the view with that element
+        // Get element from your dataset at this position and replace the contents of the view with that element
         val currentRecipes = recipes[position]
         holder.bind(currentRecipes)
     }
