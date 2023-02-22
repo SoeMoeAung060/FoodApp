@@ -62,6 +62,9 @@ class FavoriteRecipesAdapter(
         val currentRecipes = favoriteRecipes[position]
         holder.bind(currentRecipes)
 
+
+        saveItemStateOnScroll(holder, currentRecipes)
+
         /**
          * Single Click Listener
          * */
@@ -98,6 +101,17 @@ class FavoriteRecipesAdapter(
     override fun getItemCount(): Int {
         return favoriteRecipes.size
     }
+
+    // Favorite List ထဲမှာ ၁၀ခုအထက် save လုပ်ပြီးတော့ long click selection ၁ခု မှတ်လိုက်ရင်
+    // ပြီးတော့ List ထဲမှာရှိတဲ့ ၁၀ခုမြောက်လောက်က item က auto select လုပ်ပေးတာကိုဖြေရှင်းနည်း
+    private fun saveItemStateOnScroll(holder: MyViewHolder, currentRecipe: FavoriteEntity){
+        if(selectedRecipes.contains(currentRecipe)){
+            changeRecipeStyle(holder, R.color.cardBackgroundLightColor, R.color.strokeLightColor)
+        }else{
+            changeRecipeStyle(holder, R.color.cardBackgroundColor, R.color.stockColor)
+        }
+    }
+
 
     private fun applySelection(holder: MyViewHolder, currentRecipe: FavoriteEntity) {
         if (selectedRecipes.contains(currentRecipe)) {

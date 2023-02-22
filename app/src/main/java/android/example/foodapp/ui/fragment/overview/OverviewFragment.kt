@@ -1,6 +1,7 @@
 package android.example.foodapp.ui.fragment.overview
 
 import android.example.foodapp.R
+import android.example.foodapp.bindingAdapters.RecipesRowBinding
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import coil.load
+import android.example.foodapp.models.Result
 import org.jsoup.Jsoup
 import org.w3c.dom.Text
 
@@ -30,17 +32,13 @@ class OverviewFragment : Fragment() {
 
         //This args getting our Parcelable data from our pagerAdapter or Detail Activity so we need to that two lines
         val args = arguments
-        val myBundle : android.example.foodapp.models.Result = args?.getParcelable<android.example.foodapp.models.Result>(RECIPES_RESULT) as android.example.foodapp.models.Result
+        val myBundle : Result = args?.getParcelable<Result>(RECIPES_RESULT) as Result
 
         binding.mainImageView.load(myBundle.image)
         binding.timeTextView.text = myBundle.readyInMinutes.toString()
         binding.heartTextView.text = myBundle.aggregateLikes.toString()
         binding.titleTextView.text = myBundle.title
-        myBundle.summary.let {
-            val summary = Jsoup.parse(it).text()
-            binding.summaryTextView.text = summary
-        }
-
+        RecipesRowBinding.parseHtml(binding.summaryTextView, myBundle.summary)
 
         updateColors(myBundle.vegan, binding.veganTextView, binding.veganImageView)
         updateColors(myBundle.vegetarian, binding.vegetableTextView, binding.vegetableImageView)
@@ -48,8 +46,6 @@ class OverviewFragment : Fragment() {
         updateColors(myBundle.glutenFree, binding.glutenFreeTextView, binding.glutenFreeImageView)
         updateColors(myBundle.veryHealthy, binding.healthyTextView, binding.healthyImageView)
         updateColors(myBundle.cheap, binding.cheapTextView, binding.cheapImageView)
-
-
 
         return binding.root
     }

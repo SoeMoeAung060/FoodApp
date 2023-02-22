@@ -66,6 +66,7 @@ class DetailsActivity : AppCompatActivity() {
             this
         )
 
+        //TabLayout နဲ့ ViewPager ချိတ်ထားတာကို  ViewPager Body ထဲမှာ ဘယ်ညာရွှေ့လို့မရအောင် ပိတ်ပေးတာ
         binding.viewPager2.isUserInputEnabled = false
         binding.viewPager2.apply {
             adapter = pagerAdapter

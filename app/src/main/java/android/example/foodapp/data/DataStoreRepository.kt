@@ -14,6 +14,7 @@ import androidx.datastore.preferences.core.*
 import androidx.datastore.preferences.preferencesDataStore
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.scopes.ActivityRetainedScoped
+import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
@@ -30,7 +31,7 @@ data class MealAndDietType(
     val selectedDietTypeId : Int
 )
 
-@ActivityRetainedScoped
+@ViewModelScoped
 class DataStoreRepository @Inject constructor(@ApplicationContext private val context: Context) {
 
     //Creating the Keys
