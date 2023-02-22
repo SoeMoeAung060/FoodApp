@@ -16,6 +16,7 @@
         tools:context=".ui.fragment.recipes.RecipesFragment">
 
 
+
         <com.facebook.shimmer.ShimmerFrameLayout
             android:id="@+id/shimmer_view_container"
             android:layout_width="match_parent"

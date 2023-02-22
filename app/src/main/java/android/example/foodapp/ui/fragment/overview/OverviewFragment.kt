@@ -18,8 +18,8 @@ import org.w3c.dom.Text
 
 class OverviewFragment : Fragment() {
 
-    private lateinit var _binding : FragmentOverviewBinding
-    private val binding get() = _binding
+    private var _binding : FragmentOverviewBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,12 +54,19 @@ class OverviewFragment : Fragment() {
         return binding.root
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
     private fun updateColors(stateIsOn : Boolean, textView : TextView, imageView: ImageView){
         if (stateIsOn){
             textView.setTextColor(ContextCompat.getColor(requireContext(), R.color.green))
             imageView.setColorFilter(ContextCompat.getColor(requireContext(), R.color.green))
         }
     }
+
+
 
 
 }

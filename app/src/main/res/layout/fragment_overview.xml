@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:layoutDescription="@xml/fragment_overview_scene"
     tools:context=".ui.fragment.overview.OverviewFragment">
 
 
@@ -21,9 +22,9 @@
 
     <View
         android:id="@+id/gradient_overlay"
-        android:background="@drawable/gradient_overlay"
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        android:background="@drawable/gradient_overlay"
         app:layout_constraintBottom_toBottomOf="@+id/main_imageView"
         app:layout_constraintEnd_toEndOf="@+id/main_imageView"
         app:layout_constraintStart_toStartOf="@+id/main_imageView" />
@@ -44,11 +45,11 @@
         android:id="@+id/time_imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:tint="@color/white"
         android:src="@drawable/ic_clock"
         app:layout_constraintBottom_toTopOf="@+id/time_textView"
         app:layout_constraintEnd_toEndOf="@+id/time_textView"
-        app:layout_constraintStart_toStartOf="@+id/time_textView" />
+        app:layout_constraintStart_toStartOf="@+id/time_textView"
+        app:tint="@color/white" />
 
     <TextView
         android:id="@+id/heart_textView"
@@ -66,11 +67,11 @@
         android:id="@+id/heart_imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:tint="@color/white"
         android:src="@drawable/ic_heart"
         app:layout_constraintBottom_toTopOf="@+id/heart_textView"
         app:layout_constraintEnd_toEndOf="@+id/heart_textView"
-        app:layout_constraintStart_toStartOf="@+id/heart_textView" />
+        app:layout_constraintStart_toStartOf="@+id/heart_textView"
+        app:tint="@color/white" />
 
     <TextView
         android:id="@+id/title_textView"
@@ -80,9 +81,9 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:text="Title"
+        android:textColor="@color/darkGray"
         android:textSize="24dp"
         android:textStyle="bold"
-        android:textColor="@color/darkGray"
         app:layout_constraintEnd_toEndOf="@+id/main_imageView"
         app:layout_constraintStart_toStartOf="@+id/main_imageView"
         app:layout_constraintTop_toBottomOf="@+id/main_imageView" />
@@ -103,8 +104,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="Vegan"
-        android:textSize="16sp"
         android:textColor="@color/darkGray"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/vegan_imageView"
         app:layout_constraintStart_toEndOf="@+id/vegan_imageView"
         app:layout_constraintTop_toTopOf="@+id/vegan_imageView" />
@@ -126,8 +127,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="vegetable"
-        android:textSize="16sp"
         android:textColor="@color/darkGray"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/vegetable_imageView"
         app:layout_constraintStart_toEndOf="@+id/vegetable_imageView"
         app:layout_constraintTop_toTopOf="@+id/vegetable_imageView" />
@@ -150,8 +151,8 @@
         android:id="@+id/dairy_free_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Dairy Free"
         android:layout_marginStart="8dp"
+        android:text="Dairy Free"
         android:textColor="@color/darkGray"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/dairy_free_ImageView"
@@ -173,9 +174,9 @@
         android:id="@+id/gluten_free_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:text="Gluten Free"
         android:textColor="@color/darkGray"
-        android:layout_marginStart="8dp"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/gluten_free_ImageView"
         app:layout_constraintStart_toEndOf="@+id/gluten_free_ImageView"
@@ -198,8 +199,8 @@
         android:id="@+id/healthy_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Healthy"
         android:layout_marginStart="8dp"
+        android:text="Healthy"
         android:textColor="@color/darkGray"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/healthy_ImageView"
@@ -220,8 +221,8 @@
         android:id="@+id/cheap_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cheap"
         android:layout_marginStart="8dp"
+        android:text="Cheap"
         android:textColor="@color/darkGray"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/cheap_imageView"
@@ -242,20 +243,42 @@
         app:layout_constraintTop_toBottomOf="@+id/vegetable_imageView" />
 
 
-    <TextView
-        android:id="@+id/summary_textView"
-        android:layout_width="0dp"
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:text="Description"
-        android:textColor="@color/darkGray"
-        android:textSize="14dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/description_textView" />
+        app:layout_constraintTop_toBottomOf="@+id/description_textView"
+        app:layout_constraintVertical_bias="0.696">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/summary_textView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical"
+                android:text="Description"
+                android:textColor="@color/darkGray"
+                android:textSize="14dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/description_textView" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.motion.widget.MotionLayout>
